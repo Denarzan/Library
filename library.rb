@@ -57,6 +57,11 @@ class Reader < Entity
     @city = city
     @street = street
     @house = house
+    validate
+  end
+
+  private
+  def validate
     check_type(name, String)
     check_not_empty(name)
     check_type(email, String)
@@ -117,12 +122,18 @@ class Library
 
   def save(path_to_file)
     File.open(path_to_file, 'w') do |file|
-      YAML.dump(@authors, file)
+      # YAML.dump(@authors, file)
+      file.write(to_yaml)
+      # puts "save #{@authors}"
     end
   end
 
-  def top_readers(quantity) #TODO взять заказы и по них вычислить чьё имя чаще всего встречается. дефолт = 1
-    @orders
+  def top_readers(quantity=1) #TODO взять заказы и по них вычислить чьё имя чаще всего встречается. дефолт = 1
+    @orders.each do |order|
+      top_readers_arr = order.reader.each_with_object(Hash.new{ |h, k| h[k] = 0}) { |reader, h| h[reader] += 1}
+      sorted_readers = top_readers_arr.sort_by{ |reader, count| -count }
+      sorted_readers.keys[0..quantity]
+    end
   end
 
   def top_books(quantity) #TODO взять заказы и по них вычислить какую книгу брали чаще всего. дефолт = 1
@@ -136,9 +147,15 @@ class Library
   private
   def load(file)
     begin
-      data = YAML.load_file(file) || []
-      @authors = data[Author]
-
+      # data = YAML.load_file(file) || []
+      # puts data
+      # @authors = data
+      # puts "load #{@authors}"
+      data = File.open(file, 'r') do |filename|
+        test = YAML.load(filename)
+        puts test
+        puts test.authors.first.name
+      end
     rescue Errno::ENOENT
       nil
     end
@@ -148,11 +165,9 @@ class Library
 end
 
 author = Author.new("Nazar")
-author2 = Author.new("KOmar", "Norm")
+author2 = Author.new("Trololo", "Norm")
 lib = Library.new('empty.yaml')
-=begin
 lib.add(author)
 lib.add(author2)
-=end
 lib.save('empty.yaml')
-puts lib.authors
+# puts lib.authors

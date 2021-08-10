@@ -1,1 +1,11 @@
---- []
+--- !ruby/object:Library
+authors:
+- !ruby/object:Author
+  name: Nazar
+  biography: 
+- !ruby/object:Author
+  name: Trololo
+  biography: Norm
+books: []
+readers: []
+orders: []
