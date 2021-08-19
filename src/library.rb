@@ -3,7 +3,7 @@
 require 'yaml'
 require 'date'
 require_relative 'entities'
-require_relative '../db_methods/data_methods'
+require_relative '../db_methods/db_functions'
 
 class Library
   include DBFunctions
