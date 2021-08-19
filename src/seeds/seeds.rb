@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative '../src/library'
+require_relative '../library'
 
-lib = Library.new('../src/storage.yml')
+lib = Library.new('../storage.yml')
 
 author = Author.new('Nazar')
 author2 = Author.new('Trololo', 'Norm')
@@ -42,5 +42,5 @@ lib.add(order5)
 lib.top_readers(3)
 lib.top_books(3)
 lib.count_readers_of_top_books
-lib.save('src/storage.yml')
+lib.save('../storage.yml')
 # puts lib.books[0].author
