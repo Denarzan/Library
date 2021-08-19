@@ -42,5 +42,5 @@ lib.add(order5)
 lib.top_readers(3)
 lib.top_books(3)
 lib.count_readers_of_top_books
-lib.save('../src/storage.yml')
+lib.save('src/storage.yml')
 # puts lib.books[0].author
