@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+require_relative '../validation/errors'
 
 module DBFunctions
   def load_file(file)
@@ -6,11 +6,11 @@ module DBFunctions
       return nil
     end
     File.open(file, 'r') do |filename|
-      data = YAML.safe_load(filename)
-      @authors.push(data.authors)
-      @books.push(data.books)
-      @readers.push(data.readers)
-      @orders.push(data.orders)
+      data = YAML.load(filename)
+      data.authors.each { |author| @authors.push(author) }
+      data.books.each { |book| @books.push(book) }
+      data.readers.each { |reader| @readers.push(reader) }
+      data.orders.each { |order| @orders.push(order) }
     end
   rescue Errno::ENOENT
     nil
@@ -29,7 +29,7 @@ module DBFunctions
     when Reader then @readers.push(entity)
     when Order then @orders.push(entity)
     else
-      raise("Your data doesn't belong to accessible entities. You can add only Author, Book, Reader or Order")
+      raise Errors::ClassError
     end
   end
 end

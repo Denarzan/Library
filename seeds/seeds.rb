@@ -16,7 +16,7 @@ book2 = Book.new('Book2', author2)
 lib.add(book)
 lib.add(book2)
 
-reader = Reader.new('Otto', 'otto@gmail.com', 'NY', 'Bolova', 42)
+reader = Reader.new('', 'otto@gmail.com', 'NY', 'Bolova', 42)
 reader2 = Reader.new('Fon', 'fon@gmail.com', 'CF', 'Libera', 5)
 reader3 = Reader.new('Bismark', 'bismark@gmail.com', 'WN', 'Ikona', 3)
 reader4 = Reader.new('Greta', 'greta@gmail.com', 'TX', 'Meranu', 21)

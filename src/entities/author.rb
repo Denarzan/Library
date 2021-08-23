@@ -6,7 +6,6 @@ class Author < Entity
   def initialize(name, biography = nil)
     @name = name
     @biography = biography
-    super()
     validate
   end
 

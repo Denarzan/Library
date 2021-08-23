@@ -7,7 +7,6 @@ class Order < Entity
     @book = book
     @reader = reader
     @date = date
-    super()
     validate
   end
 

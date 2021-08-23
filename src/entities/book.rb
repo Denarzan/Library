@@ -6,7 +6,6 @@ class Book < Entity
   def initialize(title, author)
     @title = title
     @author = author
-    super()
     validate
   end
 

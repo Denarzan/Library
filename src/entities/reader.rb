@@ -9,7 +9,6 @@ class Reader < Entity
     @city = city
     @street = street
     @house = house
-    super()
     validate
   end
 
