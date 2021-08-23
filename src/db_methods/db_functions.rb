@@ -1,13 +1,16 @@
 # frozen_string_literal: true
 
 module DBFunctions
-  def load(file)
+  def load_file(file)
+    if File.zero?(file)
+      return nil
+    end
     File.open(file, 'r') do |filename|
       data = YAML.safe_load(filename)
-      data.authors.each { |author| @authors.push(author) }
-      data.books.each { |book| @books.push(book) }
-      data.readers.each { |reader| @readers.push(reader) }
-      data.orders.each { |order| @orders.push(order) }
+      @authors.push(data.authors)
+      @books.push(data.books)
+      @readers.push(data.readers)
+      @orders.push(data.orders)
     end
   rescue Errno::ENOENT
     nil

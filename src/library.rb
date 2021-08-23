@@ -19,7 +19,7 @@ class Library
     @books = []
     @readers = []
     @orders = []
-    load(file)
+    load_file(file)
   end
 
   def top_readers(quantity = 1)
