@@ -4,13 +4,11 @@ module Validate
   include Errors
 
   def check_type(*vars, type)
-    raise TypeError unless vars.each { |var| var.is_a? type }
+    vars.each { |var| raise TypeError unless var.is_a? type }
   end
 
   def check_not_empty(*vars)
-    vars.each do |var|
-      raise EmptyError if var.strip.empty?
-    end
+    vars.each { |var| raise EmptyError if var.strip.empty? }
   end
 
   def check_positive(var)
