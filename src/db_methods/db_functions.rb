@@ -1,24 +1,27 @@
-require_relative '../validation/errors'
+require_relative "../validation/errors"
 
 module DBFunctions
   def load_file(file)
-    if File.zero?(file)
-      return nil
-    end
-    File.open(file, 'r') do |filename|
-      data = YAML.load(filename)
-      data.authors.each { |author| @authors.push(author) }
-      data.books.each { |book| @books.push(book) }
-      data.readers.each { |reader| @readers.push(reader) }
-      data.orders.each { |order| @orders.push(order) }
-    end
+    return nil if File.zero?(file)
+
+    save_data(file)
   rescue Errno::ENOENT
     nil
   end
 
   def save(path_to_file)
-    File.open(path_to_file, 'w') do |file|
+    File.open(path_to_file, "w") do |file|
       file.write(to_yaml)
+    end
+  end
+
+  def save_data(file)
+    File.open(file, "r") do |filename|
+      data = YAML.load(filename)
+      data.authors.each { |author| @authors.push(author) }
+      data.books.each { |book| @books.push(book) }
+      data.readers.each { |reader| @readers.push(reader) }
+      data.orders.each { |order| @orders.push(order) }
     end
   end
 

@@ -1,18 +1,18 @@
 module Errors
   class TypeError < StandardError
-    def initialize(msg = 'Wrong type of variables')
+    def initialize(msg = "Wrong type of variables")
       super
     end
   end
 
   class EmptyError < StandardError
-    def initialize(msg = 'Some variable is empty')
+    def initialize(msg = "Some variable is empty")
       super
     end
   end
 
   class SignError < StandardError
-    def initialize(msg = 'The number should be positive.')
+    def initialize(msg = "The number should be positive.")
       super
     end
   end

@@ -1,4 +1,4 @@
-require_relative 'entity'
+require_relative "entity"
 
 class Order < Entity
   attr_reader :book, :reader, :date

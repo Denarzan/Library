@@ -8,7 +8,9 @@ module Validate
   end
 
   def check_not_empty(*vars)
-    raise EmptyError if vars.each.map(&:empty?).all?
+    vars.each do |var|
+      raise EmptyError if var.strip.empty?
+    end
   end
 
   def check_positive(var)

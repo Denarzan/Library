@@ -1,4 +1,4 @@
-require_relative 'entity'
+require_relative "entity"
 
 class Book < Entity
   attr_reader :title, :author

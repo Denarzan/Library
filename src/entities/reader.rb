@@ -1,4 +1,4 @@
-require_relative 'entity'
+require_relative "entity"
 
 class Reader < Entity
   attr_reader :name, :email, :city, :street, :house
