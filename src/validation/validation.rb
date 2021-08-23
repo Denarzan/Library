@@ -4,7 +4,7 @@ module Validate
   include Errors
 
   def check_type(*vars, type)
-    vars.each { |var| raise TypeError unless var.is_a? type }
+    vars.each { |var| raise TypeError unless var.instance_of? type }
   end
 
   def check_not_empty(*vars)
