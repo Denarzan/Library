@@ -24,16 +24,16 @@ class Library
 
   def top_readers(quantity = 1)
     top_readers_arr = @orders.uniq.group_by(&:reader).map { |key, value| [key, value.count] }
-    top_readers_arr[0...quantity].each { |reader, _count| puts reader.name.to_s }
+    top_readers_arr[0...quantity].sort_by { |_, orders| -orders }.map { |reader, _count| reader.name.to_s }
   end
 
   def top_books(quantity = 1)
-    top_books_arr = @orders.group_by(&:book).map { |key, value| [key, value.count] }
-    top_books_arr[0...quantity].each { |book, _count| puts book.title.to_s }
+    top_books_arr = @orders.uniq.group_by(&:book).map { |key, value| [key, value.count] }
+    top_books_arr[0...quantity].sort_by { |_, orders| -orders }.map { |book, _count| book.title.to_s }
   end
 
   def count_readers_of_top_books(quantity = 3)
     top_books_arr = @orders.group_by(&:book).map { |key, value| [key, value.count] }
-    top_books_arr[0...quantity].each { |book, count| puts "#{book.title} -> #{count}" }
+    top_books_arr[0...quantity].sort_by { |_, orders| -orders }.map { |_book, count| count }
   end
 end

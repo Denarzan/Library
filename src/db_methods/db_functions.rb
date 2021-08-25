@@ -32,7 +32,7 @@ module DBFunctions
     when Reader then @readers.push(entity)
     when Order then @orders.push(entity)
     else
-      raise Errors::ClassError
+      raise TypeError
     end
   end
 end
