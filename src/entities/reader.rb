@@ -12,6 +12,10 @@ class Reader < Entity
     validate
   end
 
+  def to_s
+    "Name: #{@name}\nEmail: #{@email}\n\n"
+  end
+
   private
 
   def validate

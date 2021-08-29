@@ -9,6 +9,10 @@ class Author < Entity
     validate
   end
 
+  def to_s
+    @name
+  end
+
   private
 
   def validate

@@ -9,6 +9,10 @@ class Book < Entity
     validate
   end
 
+  def to_s
+    "Title '#{@title}', author: #{@author}"
+  end
+
   private
 
   def validate

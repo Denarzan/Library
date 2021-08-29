@@ -10,6 +10,10 @@ class Order < Entity
     validate
   end
 
+  def to_s
+    "Book: #{@book}\nReader: #{@reader}\nDate: #{@date}"
+  end
+
   private
 
   def validate
